@@ -44,6 +44,14 @@ require('lazy').setup({
 
   require 'kickstart/plugins/treesitter',
 
+  -- custom plugins
+
+  require 'custom/plugins/code-runner',
+
+  require 'custom/plugins/neo-tree',
+
+  require 'custom/plugins/venv-selector'
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -90,5 +98,7 @@ require('lazy').setup({
     },
   },
 })
+
+
 
 -- vim: ts=2 sts=2 sw=2 et

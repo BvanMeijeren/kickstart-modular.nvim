@@ -31,6 +31,18 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Key mappings for Code Runner
+vim.api.nvim_set_keymap("n", "<leader>rr", ":RunCode<CR>", { noremap = true, silent = true }) -- Run the current file
+vim.api.nvim_set_keymap("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = true }) -- Run the current file and close output
+vim.api.nvim_set_keymap("v", "<leader>rs", ":RunCode<CR>", { noremap = true, silent = true }) -- Run selected code
+
+-- Key mappings for venv-selector
+vim.keymap.set("n", "<leader>vs", ":VenvSelect<CR>", { noremap = true, silent = true }) -- Open venv-selector
+vim.keymap.set("n", "<leader>vc", ":VenvSelectCached<CR>", { noremap = true, silent = true }) -- Open cached venv list
+
+-- Neo tree mapping
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
