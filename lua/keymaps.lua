@@ -57,4 +57,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- DBUI / dadbod keymaps ---
+-- auto initialize DBUI when opening an sql file
+-- Automatically initialize DBUI when opening an SQL file
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sql", -- Trigger for SQL files
+  callback = function()
+    -- Check if DBUI is initialized; if not, initialize it
+    if vim.fn.bufexists("DBUI") == 0 then
+      vim.cmd("DBUI")
+      vim.cmd("DBUIToggle") -- Close DBUI right after opening, so it doesn't stay open
+    end
+  end,
+  desc = "Initialize DBUI when opening an SQL file",
+})
+
+-- Function to toggle DBUI
+vim.keymap.set("n", "<leader>du", ":DBUIToggle<CR>", { desc = "Toggle Database UI" })
+
+
+-- sql auto completion
+vim.cmd([[
+  autocmd FileType sql,mysql,plsql setlocal omnifunc=vim_dadbod_completion#omni
+]])
+
+
 -- vim: ts=2 sts=2 sw=2 et
