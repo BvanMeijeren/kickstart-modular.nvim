@@ -90,20 +90,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
--- Automatically activate a virtual environment on startup (DOES NOT WORK YET)
---vim.api.nvim_create_autocmd("VimEnter", {
---    pattern = "*",
---    callback = function()
---        local status, venv_selector = pcall(require, "venv-selector")
---        if status and venv_selector.refresh then
---            venv_selector.refresh({ auto = true }) -- Automatically find and activate venv
---        else
---            vim.notify("venv-selector is not properly loaded", vim.log.levels.ERROR)
---        end
---    end,
---})
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
