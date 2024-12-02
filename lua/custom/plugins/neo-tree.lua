@@ -44,7 +44,9 @@ return {
                         hide_dotfiles = true,
                         hide_gitignored = true,
                     },
-                    follow_current_file = true,
+                    follow_current_file = { 
+                    	enabled = true 
+                    	},
                     hijack_netrw_behavior = "open_default",
                 },
             })
