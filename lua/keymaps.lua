@@ -32,16 +32,16 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Key mappings for Code Runner
-vim.api.nvim_set_keymap("n", "<leader>rr", ":RunCode<CR>", { noremap = true, silent = true }) -- Run the current file
-vim.api.nvim_set_keymap("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = true }) -- Run the current file and close output
-vim.api.nvim_set_keymap("v", "<leader>rs", ":RunCode<CR>", { noremap = true, silent = true }) -- Run selected code
+vim.api.nvim_set_keymap('n', '<leader>rr', ':RunCode<CR>', { noremap = true, silent = true }) -- Run the current file
+vim.api.nvim_set_keymap('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = true }) -- Run the current file and close output
+vim.api.nvim_set_keymap('v', '<leader>rs', ':RunCode<CR>', { noremap = true, silent = true }) -- Run selected code
 
 -- Key mappings for venv-selector
-vim.keymap.set("n", "<leader>vs", ":VenvSelect<CR>", { noremap = true, silent = true }) -- Open venv-selector
-vim.keymap.set("n", "<leader>vc", ":VenvSelectCached<CR>", { noremap = true, silent = true }) -- Open cached venv list
+vim.keymap.set('n', '<leader>vs', ':VenvSelect<CR>', { noremap = true, silent = true }) -- Open venv-selector
+vim.keymap.set('n', '<leader>vc', ':VenvSelectCached<CR>', { noremap = true, silent = true }) -- Open cached venv list
 
 -- Neo tree mapping
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -60,26 +60,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- DBUI / dadbod keymaps ---
 -- auto initialize DBUI when opening an sql file
 -- Automatically initialize DBUI when opening an SQL file
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "sql", -- Trigger for SQL files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sql', -- Trigger for SQL files
   callback = function()
     -- Check if DBUI is initialized; if not, initialize it
-    if vim.fn.bufexists("DBUI") == 0 then
-      vim.cmd("DBUI")
-      vim.cmd("DBUIToggle") -- Close DBUI right after opening, so it doesn't stay open
+    if vim.fn.bufexists 'DBUI' == 0 then
+      vim.cmd 'DBUI'
+      vim.cmd 'DBUIToggle' -- Close DBUI right after opening, so it doesn't stay open
     end
   end,
-  desc = "Initialize DBUI when opening an SQL file",
+  desc = 'Initialize DBUI when opening an SQL file',
 })
 
 -- Function to toggle DBUI
-vim.keymap.set("n", "<leader>du", ":DBUIToggle<CR>", { desc = "Toggle Database UI" })
-
+vim.keymap.set('n', '<leader>du', ':DBUIToggle<CR>', { desc = 'Toggle Database UI' })
 
 -- sql auto completion
-vim.cmd([[
+vim.cmd [[
   autocmd FileType sql,mysql,plsql setlocal omnifunc=vim_dadbod_completion#omni
-]])
-
+]]
 
 -- vim: ts=2 sts=2 sw=2 et
